@@ -1,0 +1,12 @@
+# Encabezados de Cloudflare Pages (ver DEPLOY.md, paso 4)
+
+# Archivos con hash en el nombre: nunca cambian, el navegador los puede guardar un año
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Seguridad básica para todas las páginas
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

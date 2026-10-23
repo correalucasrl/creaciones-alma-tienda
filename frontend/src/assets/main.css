@@ -1,0 +1,227 @@
+/* =========================================================================
+   Creaciones Alma — paleta del footer: lila y rosa fuerte
+   Fondo blanco lila, rosa (#ec4899) como color principal, lila para los
+   fondos destacados y violeta para los bloques oscuros.
+   Títulos en Fraunces, textos en DM Sans y la marca en Dancing Script.
+   (Los nombres de las variables vienen del diseño anterior; se mantienen
+   para no tocar todos los componentes.)
+   ========================================================================= */
+:root {
+  /* Paleta */
+  --crema: #fcfaff;              /* fondo de página: blanco con un toque lila */
+  --crema-oscura: #f5f3ff;
+  --rosa-polvo: #fce7f3;         /* fondos rosas suaves */
+  --rosa-polvo-medio: #e9d5ff;   /* bordes de campos y chips */
+  --rosa-viejo: #ec4899;         /* color principal (el rosa del footer) */
+  --rosa-viejo-hover: #db2777;
+  --rosa-texto: #be185d;         /* rosa con contraste suficiente para textos */
+  --lila-suave: #ede9fe;         /* el lila del footer */
+  --lila-fuerte: #7c3aed;        /* bloques oscuros: barra de anuncios, sellos, chips activos */
+  --ciruela: #1f2937;            /* texto principal (igual al del footer) */
+  --ciruela-suave: #6b7280;
+  --borde: #ede9fe;
+  --blanco: #ffffff;
+  --oferta: #db2777;             /* precios y badges de oferta */
+  --salvia: #dcfce7;             /* envío gratis, cupón aplicado, ok */
+  --salvia-texto: #15803d;
+
+  --fuente-titulos: 'Fraunces', Georgia, serif;
+  --fuente-texto: 'DM Sans', system-ui, sans-serif;
+  --fuente-marca: 'Dancing Script', cursive;
+
+  --radio: 14px;
+  --radio-grande: 22px;
+  --sombra-suave: 0 1px 2px rgba(76, 29, 149, 0.04), 0 8px 24px rgba(76, 29, 149, 0.07);
+  --sombra-hover: 0 2px 4px rgba(76, 29, 149, 0.05), 0 14px 32px rgba(76, 29, 149, 0.12);
+
+  /* Paleta anterior: la sigue usando el footer, que se mantiene igual a propósito */
+  --rosa: #ec4899;
+  --rosa-claro: #fce4ec;
+  --lila: #a78bfa;
+  --lila-claro: #ede9fe;
+  --turquesa: #2dd4bf;
+  --turquesa-claro: #ccfbf1;
+  --durazno: #fdba9a;
+  --durazno-claro: #ffedd5;
+  --texto-oscuro: #1f2937;
+  --texto-gris: #6b7280;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  color: var(--ciruela);
+  margin: 0;
+  background-color: var(--crema);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  color: var(--ciruela);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--rosa-texto);
+}
+
+.font-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+/* El footer conserva su tipografía original */
+#footer-section,
+#footer-section :is(h1, h2, h3, h4, h5, h6):not(.font-script) {
+  font-family: 'Poppins', sans-serif;
+  color: var(--texto-oscuro);
+  letter-spacing: normal;
+}
+#footer-section .font-script {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+#footer-section h6 { font-weight: 700; }
+#footer-section { color: var(--texto-oscuro); }
+
+/* ---------- Botones ---------- */
+.btn-turquesa,
+.btn-alma {
+  background-color: var(--rosa-viejo);
+  color: var(--blanco);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.btn-turquesa:hover,
+.btn-alma:hover,
+.btn-turquesa:focus-visible,
+.btn-alma:focus-visible {
+  background-color: var(--rosa-viejo-hover);
+  color: var(--blanco);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(236, 72, 153, 0.3);
+}
+.btn-turquesa:disabled,
+.btn-alma:disabled {
+  background-color: var(--rosa-polvo-medio);
+  color: var(--ciruela-suave);
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-alma-borde {
+  background: transparent;
+  color: var(--ciruela);
+  border: 1px solid var(--rosa-polvo-medio);
+  border-radius: 999px;
+  padding: 11px 26px;
+  font-weight: 500;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.btn-alma-borde:hover {
+  border-color: var(--rosa-viejo);
+  background: var(--rosa-polvo);
+  color: var(--ciruela);
+}
+
+/* ---------- Títulos de sección ---------- */
+.section-title {
+  text-align: center;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin-bottom: 0.5rem;
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--ciruela-suave);
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+}
+.eyebrow {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rosa-texto);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Formularios ---------- */
+.form-control,
+.form-select {
+  border-color: var(--rosa-polvo-medio);
+  border-radius: 12px;
+  color: var(--ciruela);
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--rosa-viejo);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.18);
+}
+.form-check-input:checked {
+  background-color: var(--rosa-viejo);
+  border-color: var(--rosa-viejo);
+}
+.form-check-input:focus {
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.18);
+  border-color: var(--rosa-viejo);
+}
+
+/* ---------- Precios y badges ---------- */
+.precio-actual {
+  color: var(--ciruela);
+  font-weight: 500;
+}
+.precio-oferta {
+  color: var(--oferta);
+  font-weight: 500;
+}
+.precio-tachado {
+  color: var(--ciruela-suave);
+  text-decoration: line-through;
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+.badge-alma {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.badge-oferta { background: var(--oferta); color: var(--blanco); }
+.badge-nuevo { background: var(--blanco); color: var(--ciruela); border: 1px solid var(--rosa-polvo-medio); }
+.badge-agotado { background: var(--crema-oscura); color: var(--ciruela-suave); }
+.badge-destacado { background: var(--rosa-polvo); color: var(--rosa-texto); }
+
+/* Tarjetas genéricas */
+.card-alma {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-grande);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Bootstrap: colores de acento acordes al diseño */
+.text-pink { color: var(--rosa-texto); }
+.dropdown-item:active { background-color: var(--rosa-viejo); }
+.spinner-border.text-secondary { color: var(--rosa-viejo) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,52 @@
+# Publica el backend en Azure App Service cada vez que se mergea a main un cambio en backend/.
+# También se puede correr a mano: GitHub → Actions → "Deploy backend a Azure" → Run workflow.
+#
+# Necesita el secreto AZURE_WEBAPP_PUBLISH_PROFILE (perfil de publicación del App Service,
+# ver DEPLOY.md). Azure instala las dependencias del lado del servidor
+# (SCM_DO_BUILD_DURING_DEPLOYMENT=true en la configuración del App Service).
+name: Deploy backend a Azure
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: false
+
+env:
+  AZURE_WEBAPP_NAME: creaciones-alma-api
+
+jobs:
+  deploy:
+    # Solo publica desde el repositorio privado de producción; en copias públicas (portfolio) no corre
+    if: github.repository == 'correalucasrl/creaciones-alma'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      # Verifica que las dependencias se instalan y que el código no tiene errores de sintaxis
+      # antes de publicar (la instalación real la hace Azure)
+      - name: Verificar el backend
+        working-directory: backend
+        run: |
+          npm ci --omit=dev
+          node --check server.js
+          rm -rf node_modules
+
+      - name: Publicar en Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: backend

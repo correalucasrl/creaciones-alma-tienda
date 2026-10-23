@@ -1,0 +1,35 @@
+# Dependencias
+**/node_modules
+
+# Variables de entorno (contraseñas y claves reales - NUNCA subir)
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Build
+frontend/dist
+frontend/dist-ssr
+
+# Logs
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Editor / sistema
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+.eslintcache
+
+# Cypress / Vitest
+frontend/cypress/videos/
+frontend/cypress/screenshots/
+frontend/__screenshots__/

@@ -1,0 +1,235 @@
+/* Estilos compartidos del panel de administración.
+   Todo cuelga de .admin-shell (AdminLayout), así no afecta a la tienda */
+
+/* Centrado en el espacio que deja el menú, con un ancho máximo cómodo de leer */
+.admin-shell .admin-pagina {
+  padding: 28px 32px 48px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ---------- Encabezado de cada sección ---------- */
+.admin-shell .admin-encabezado {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.admin-shell .admin-titulo {
+  font-family: var(--fuente-titulos);
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: var(--ciruela);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.admin-shell .admin-descripcion {
+  color: var(--ciruela-suave);
+  margin: 6px 0 0;
+  max-width: 640px;
+  font-size: 0.95rem;
+}
+.admin-shell .admin-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---------- Tarjetas ---------- */
+.admin-shell .form-card,
+.admin-shell .config-card,
+.admin-shell .dashboard-card,
+.admin-shell .solicitud-card,
+.admin-shell .kpi-card,
+.admin-shell .admin-card {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(76, 29, 149, 0.04);
+}
+.admin-shell .form-card h6,
+.admin-shell .dashboard-card h5,
+.admin-shell .dashboard-card h6,
+.admin-shell .config-card h6 {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  color: var(--ciruela);
+}
+.admin-shell .form-label {
+  color: var(--ciruela);
+}
+
+/* ---------- Tablas ---------- */
+.admin-shell .table-responsive:has(> .admin-table) {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+}
+.admin-shell .admin-table {
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  --bs-table-bg: transparent;
+}
+.admin-shell .admin-table thead th {
+  background: var(--crema-oscura);
+  color: var(--ciruela-suave);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--borde);
+  padding: 12px 14px;
+  white-space: nowrap;
+}
+.admin-shell .admin-table td {
+  padding: 12px 14px;
+  border-color: var(--borde);
+}
+.admin-shell .admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.admin-shell .admin-table tbody tr {
+  transition: background-color 0.15s;
+}
+.admin-shell .admin-table tbody tr:hover {
+  --bs-table-bg: #fdfbff;
+}
+
+/* ---------- Estados ---------- */
+.admin-shell .badge-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.admin-shell .badge-estado::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.admin-shell .estado-activo,
+.admin-shell .estado-pagado,
+.admin-shell .estado-resuelto { background: var(--salvia); color: var(--salvia-texto); }
+.admin-shell .estado-inactivo,
+.admin-shell .estado-cancelado,
+.admin-shell .estado-rechazado { background: #f3f4f6; color: #6b7280; }
+.admin-shell .estado-pendiente { background: #fef3c7; color: #b45309; }
+.admin-shell .estado-sin-stock { background: #ffe4e6; color: #be123c; }
+.admin-shell .estado-programado,
+.admin-shell .estado-enviado,
+.admin-shell .estado-proceso { background: #e0f2fe; color: #0369a1; }
+.admin-shell .estado-entregado { background: var(--lila-suave); color: var(--lila-fuerte); }
+
+/* ---------- Filtros tipo chip ---------- */
+.admin-shell .admin-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.admin-shell .admin-filtro {
+  border: 1px solid var(--borde);
+  background: var(--blanco);
+  color: var(--ciruela);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.86rem;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.admin-shell .admin-filtro:hover {
+  border-color: var(--rosa-polvo-medio);
+}
+.admin-shell .admin-filtro.activo {
+  background: var(--ciruela);
+  border-color: var(--ciruela);
+  color: #fff;
+}
+.admin-shell .admin-filtro small {
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+/* ---------- Botones secundarios ---------- */
+.admin-shell .btn-outline-secondary {
+  --bs-btn-color: var(--ciruela);
+  --bs-btn-border-color: var(--rosa-polvo-medio);
+  --bs-btn-hover-bg: var(--lila-suave);
+  --bs-btn-hover-color: var(--lila-fuerte);
+  --bs-btn-hover-border-color: var(--rosa-polvo-medio);
+  --bs-btn-active-bg: var(--lila-suave);
+  --bs-btn-active-color: var(--lila-fuerte);
+  --bs-btn-active-border-color: var(--rosa-polvo-medio);
+}
+.admin-shell .btn-sm {
+  border-radius: 10px;
+}
+
+/* ---------- Estado vacío ---------- */
+.admin-shell .admin-vacio {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--ciruela-suave);
+  background: var(--blanco);
+  border: 1px dashed var(--rosa-polvo-medio);
+  border-radius: 18px;
+}
+.admin-shell .admin-vacio i {
+  display: block;
+  font-size: 2rem;
+  color: var(--rosa-viejo);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 991px) {
+  .admin-shell .admin-pagina {
+    padding: 20px 16px 40px;
+  }
+  .admin-shell .admin-titulo {
+    font-size: 1.5rem;
+  }
+}
+
+/* Tablas chicas dentro de tarjetas (Finanzas) */
+.admin-shell .dashboard-card .table thead th {
+  color: var(--ciruela-suave);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom-color: var(--borde);
+}
+.admin-shell .dashboard-card .table td {
+  border-color: var(--borde);
+}
+
+/* Acciones de pausar / activar más suaves que los rojos y verdes de Bootstrap */
+.admin-shell .btn-outline-danger {
+  --bs-btn-color: #be123c;
+  --bs-btn-border-color: #fecdd3;
+  --bs-btn-hover-bg: #fff1f2;
+  --bs-btn-hover-color: #be123c;
+  --bs-btn-hover-border-color: #fda4af;
+  --bs-btn-active-bg: #ffe4e6;
+  --bs-btn-active-color: #be123c;
+  --bs-btn-active-border-color: #fda4af;
+}
+.admin-shell .btn-outline-success {
+  --bs-btn-color: var(--salvia-texto);
+  --bs-btn-border-color: #bbf7d0;
+  --bs-btn-hover-bg: var(--salvia);
+  --bs-btn-hover-color: var(--salvia-texto);
+  --bs-btn-hover-border-color: #86efac;
+  --bs-btn-active-bg: var(--salvia);
+  --bs-btn-active-color: var(--salvia-texto);
+  --bs-btn-active-border-color: #86efac;
+}
